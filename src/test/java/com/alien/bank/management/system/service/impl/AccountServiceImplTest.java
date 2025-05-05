@@ -1,14 +1,13 @@
 package com.alien.bank.management.system.service.impl;
 
-import com.alien.bank.management.system.entity.Account;
-import com.alien.bank.management.system.entity.Role;
-import com.alien.bank.management.system.entity.User;
-import com.alien.bank.management.system.mapper.AccountMapper;
-import com.alien.bank.management.system.model.account.AccountResponseModel;
-import com.alien.bank.management.system.repository.AccountRepository;
-import com.alien.bank.management.system.repository.UserRepository;
-import com.alien.bank.management.system.utils.Utils;
-import jakarta.persistence.EntityNotFoundException;
+import static org.assertj.core.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,15 +20,16 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import com.alien.bank.management.system.entity.Account;
+import com.alien.bank.management.system.entity.Role;
+import com.alien.bank.management.system.entity.User;
+import com.alien.bank.management.system.mapper.AccountMapper;
+import com.alien.bank.management.system.model.account.AccountResponseModel;
+import com.alien.bank.management.system.repository.AccountRepository;
+import com.alien.bank.management.system.repository.UserRepository;
+import com.alien.bank.management.system.utils.Utils;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import jakarta.persistence.EntityNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 public class AccountServiceImplTest {
@@ -70,6 +70,7 @@ public class AccountServiceImplTest {
                 .id(1L)
                 .cvv("123")
                 .cardNumber("0123456789123456")
+                .createdAt(new java.sql.Date(System.currentTimeMillis()))
                 .build();
     }
 
@@ -80,6 +81,7 @@ public class AccountServiceImplTest {
                 .balance(0.0)
                 .card_number(account.getCardNumber())
                 .cvv(account.getCvv())
+                
                 .build();
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
@@ -116,7 +118,9 @@ public class AccountServiceImplTest {
                 .builder()
                 .balance(0.0)
                 .card_number(account.getCardNumber())
+                .created_at(account.getCreatedAt())
                 .cvv(account.getCvv())
+                
                 .build();
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());

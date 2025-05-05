@@ -52,10 +52,10 @@ public class AccountServiceImpl implements AccountService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new EntityNotFoundException("User " + email + " Not Found"));
 
-                List<Account> accounts = accountRepository.findAllByUser(user);
-for (Account account : accounts) {
-    System.out.println("Account ID: " + account.getId() + ", createdAt: " + account.getCreatedAt());
-}
+//                 List<Account> accounts = accountRepository.findAllByUser(user);
+// for (Account account : accounts) {
+//     System.out.println("Account ID: " + account.getId() + ", createdAt: " + account.getCreatedAt());
+// }
         return accountRepository
                 .findAllByUser(user)
                 .stream()
