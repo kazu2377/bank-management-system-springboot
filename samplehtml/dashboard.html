@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダッシュボード - 口座情報</title>
+    <link rel="stylesheet" href="style.css"> <style>
+        /* dashboard.html 固有のスタイル */
+        .dashboard-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px; /* テーブル表示のため少し幅広に */
+            margin-top: 30px;
+        }
+
+        .account-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .account-table th,
+        .account-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .account-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .account-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .logout-button {
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            float: right; /* 右上に配置 */
+            margin-bottom: 20px;
+        }
+
+        .logout-button:hover {
+            background-color: #c82333;
+        }
+
+         #userInfo {
+            margin-bottom: 20px;
+            text-align: left;
+         }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <button id="logoutButton" class="logout-button">ログアウト</button>
+        <h1>口座情報</h1>
+        <div id="userInfo">
+             <p><strong>ようこそ！</strong> <span id="userName"></span> さん</p>
+             <p>メールアドレス: <span id="userEmail"></span></p>
+        </div>
+
+        <div id="accountsSection">
+            <h2>あなたの口座</h2>
+            <p id="loadingMessage">口座情報を読み込み中...</p>
+            <p id="errorMessage" class="error-message"></p>
+            <table id="accountTable" class="account-table" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>口座番号</th>
+                        <th>残高</th>
+                        <th>作成日時</th>
+                        </tr>
+                </thead>
+                <tbody id="accountTableBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

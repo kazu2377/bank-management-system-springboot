@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン - 銀行管理システム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>ログイン</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">メールアドレス:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">パスワード:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="submit-button">ログイン</button>
+            <p id="errorMessage" class="error-message"></p>
+            <p id="successMessage" class="success-message"></p>
+        </form>
+        <div class="links">
+             <a href="register.html">新規登録はこちら</a>
+             </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
